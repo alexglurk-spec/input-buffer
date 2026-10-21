@@ -1,0 +1,44 @@
+name: Build Input Buffer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  mod:
+    name: Build the mod (.geode)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build the mod
+        uses: geode-sdk/build-geode-mod@main
+        id: build
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: InputBuffer-mod
+          path: ${{ steps.build.outputs.build-output }}
+
+  tuner:
+    name: Build the settings window (.exe)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyInstaller
+        run: python -m pip install pyinstaller
+
+      - name: Build the exe
+        run: python -m PyInstaller --onefile --windowed --noconfirm --name "GD Input Buffer Tuner" tuner/buffer_tuner.py
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: InputBuffer-tuner
+          path: dist/*.exe
