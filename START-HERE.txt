@@ -1,0 +1,37 @@
+INPUT BUFFER - how to get the finished mod without installing any build tools
+==============================================================================
+
+You need a free GitHub account (github.com). GitHub builds the mod for you.
+
+1. Unzip this folder on your PC.
+
+2. On github.com click the "+" (top right) > "New repository". Name it
+   input-buffer, leave everything else as it is, click "Create repository".
+
+3. On the new empty repository page click "uploading an existing file".
+   Drag EVERYTHING from the unzipped folder into the page (the files and the
+   folders: .github, src, tuner). If the hidden ".github" folder will not
+   drag in, see step 3b.
+   Click "Commit changes".
+
+   3b. Only if .github was missing: click "Add file" > "Create new file", type
+       the name   .github/workflows/build.yml   (typing the slashes makes the
+       folders), paste in the contents of build.yml, click "Commit changes".
+
+4. Click the "Actions" tab. A run called "Build Input Buffer" starts by itself
+   (or click it, then "Run workflow"). Wait for both jobs to get a green tick,
+   usually 5 to 15 minutes the first time.
+
+5. Click the finished run and scroll to "Artifacts" at the bottom:
+     InputBuffer-mod     -> contains alexglurk.input-buffer.geode
+     InputBuffer-tuner   -> contains GD Input Buffer Tuner.exe
+   Click each one to download it (they arrive as .zip files; unzip them).
+
+6. Put alexglurk.input-buffer.geode into the geode\mods folder inside your
+   Geometry Dash folder. Start the game, click the Geode button on the main
+   menu, open the mod list and make sure "Input Buffer" is enabled.
+
+7. Run GD Input Buffer Tuner.exe next to the game. Open a level; the window
+   should say "Connected".
+
+If a job shows a red X, open it, copy the red error text and send it to me.

@@ -1,0 +1,11 @@
+{
+	"geode": "5.11.2",
+	"gd": {
+		"win": "*"
+	},
+	"id": "alexglurk.input-buffer",
+	"name": "Input Buffer",
+	"version": "v1.0.0",
+	"developer": "alexglurk",
+	"description": "Keeps an early jump click alive so it fires when you land. Settings live in a separate window."
+}
